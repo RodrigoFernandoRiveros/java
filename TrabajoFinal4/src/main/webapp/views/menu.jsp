@@ -18,7 +18,9 @@
          <li class="nav-item">
           <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/ControladorFacilitador">Ver facilitador</a>          
          </li>
-            
+         <li class="nav-item">
+         <a class="nav-link" aria-current="page" href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rodrigo Riveros - Curso: FullSatck Java  </a> 
+         </li>    
       </ul>
     </div>
   </div>
