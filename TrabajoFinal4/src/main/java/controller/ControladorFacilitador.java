@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAOs.EstudianteDAO;
 import DAOs.FacilitadorDAO;
+import modelo.Estudiante;
 import modelo.Facilitador;
 
 /**
@@ -33,17 +35,10 @@ public class ControladorFacilitador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	    FacilitadorDAO fDAO = new FacilitadorDAO();
-	    String op = (String)request.getParameter("op"); 
+	 /*   
 	     
 	   
-	    if(op==null) {
-	    	fDAO.Facilitadores= new ArrayList<Facilitador>();	    	
-	        fDAO.cargarFacilitadores();
-	    	request.setAttribute("Facilitadores", fDAO.Facilitadores);
-	    	request.getRequestDispatcher("views/facilitadores.jsp").forward(request, response);  
-	    	
-	    }
+	   
 	    if(op.equalsIgnoreCase("actualizar")) {
 	       int id = Integer.parseInt(request.getParameter("id"));
 	       System.out.println(id);
@@ -51,9 +46,41 @@ public class ControladorFacilitador extends HttpServlet {
 	       request.getRequestDispatcher("views/modificarfacilitador.jsp").forward(request, response);    
 	    	
 	    }        
-	    			
+	    	*/
+		
+		FacilitadorDAO fDAO = new FacilitadorDAO();	   
+        String op = (String)request.getParameter("op"); 	    
+	       
+	    if(op==null) {
+	    	
+	    	fDAO.Facilitadores = new ArrayList<Facilitador>();
+	        fDAO.cargarFacilitadores();
+	        
+	    	request.setAttribute("Facilitadores", fDAO.Facilitadores);
+	    	request.getRequestDispatcher("views/facilitadores.jsp").forward(request, response);  
+	        	
+	    }else {
+	    	 if(op.equalsIgnoreCase("actualizar")) {
+	 	    	
+	  	       int id = Integer.parseInt(request.getParameter("id"));	
+	  	       request.setAttribute("facilitador", fDAO.obtenerFacilitador(id));
+	  	       request.getRequestDispatcher("views/modificarfacilitador.jsp").forward(request, response);  	       	
+	  	    } 
+	    	 
+	         if(op.equalsIgnoreCase("update")) {
+	        	 Facilitador facilitador = new Facilitador(Integer.parseInt(request.getParameter("id")),(String)request.getParameter("rut"),
+	                       (String)request.getParameter("nombre"), (String)request.getParameter("email"),
+	                       (String)request.getParameter("telefono"), (String)request.getParameter("valorhora"), (String)request.getParameter("banco"), (String)request.getParameter("ctabancaria"), (String)request.getParameter("lastUpdate"));
+		 	    	
+		  	     
+		  	       fDAO.modificarFacilitador(facilitador);
+		  	       fDAO.cargarFacilitadores();
+		  	       request.setAttribute("Facilitadores", fDAO.Facilitadores);
+			       request.getRequestDispatcher("views/facilitadores.jsp").forward(request, response);  	       	
+		  	    }  	  
+		
 	}
-    
+	}  
 	
 	
 	/**

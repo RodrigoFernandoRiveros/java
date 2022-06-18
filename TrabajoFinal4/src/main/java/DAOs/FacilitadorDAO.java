@@ -16,7 +16,8 @@ public class FacilitadorDAO {
 	
 	public List<Facilitador> Facilitadores;
 	public void cargarFacilitadores(){
-		
+	this.Facilitadores = new ArrayList<Facilitador>();
+	
 		String sql = "SELECT * FROM FACILITADOR";
       
         try {
@@ -53,6 +54,19 @@ public class FacilitadorDAO {
 	        }
 		return facilitador;
 	}
-	
+	public void modificarFacilitador(Facilitador facilitador){
+        String sql = "UPDATE Facilitador SET rut= '" + facilitador.getRut() + "', nombre= '" + facilitador.getNombre() + "',"
+                + " email= '" + facilitador.getEmail() + "', telefono= '" + facilitador.getTelefono() + "', valorhora = '"+ facilitador.getValorhora()+"', banco = '"+ facilitador.getBanco()+"', ctabancaria = '"+facilitador.getCtabancaria() + "', last_update= '" + facilitador.getLast_update() + "' "
+                + "WHERE id =" + facilitador.getId();
+        try {
+            Statement declaracion = Conexion.getCon().createStatement();
+            declaracion.executeUpdate(sql);
+           
+        } catch (SQLException e) {
+            System.out.println("REVISA BIEN LA CONSULTA");    
+            e.printStackTrace();
+        }
+       
+    }
 	
 }

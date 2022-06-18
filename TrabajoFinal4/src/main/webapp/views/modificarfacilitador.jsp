@@ -14,8 +14,8 @@
 <a href="${pageContext.request.contextPath}/ControladorEstudiante">Ver estudiante</a>
 <a href="${pageContext.request.contextPath}/ControladorFacilitador">Ver facilitador</a>      
         <h1>Modificar Información del facilitador</h1>
-       <main class="Presentacion">
-             <form action="ControladorFacilitador"  method="post">
+       <main>
+             <form action="ControladorFacilitador"  method="get">
                  <label for="id">Identificador</label>
                  <input name="id" type="text" value="${facilitador.getId()}" readonly>
                  <label for="rut">Rut</label>
@@ -34,7 +34,7 @@
                  <input name="ctabancaria" type="text" value="${facilitador.getCtabancaria()}">
                  <label for="ctabancaria">Cuenta bancaria</label>
                  <input name="lastUpdate" type="text" value="${facilitador.getLast_update()}" readonly>
-                 <input type="hidden" name="operacion" value="update">
+                 <input type="hidden" name="op" value="update">
                  <input type="submit"  value="Enviar Modificación">                 
              </form>
         </main>  
