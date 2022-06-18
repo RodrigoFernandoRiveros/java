@@ -5,6 +5,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <style type="text/css">
 table td{
 border-style: solid;
@@ -13,13 +15,27 @@ th {
   background-color: green;
   opacity: 0.7;
   color:black;
+   }
+h1{
+	text-align:center;	
+	font-size:1.1em;
 }
- </style>
+.con{
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+</style>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/views/index.jsp">Volver al Home</a>
-<a href="${pageContext.request.contextPath}/ControladorEstudiante">Ver estudiante</a>
-<a href="${pageContext.request.contextPath}/ControladorFacilitador">Ver facilitador</a>
+<div class="container">
+<%@include file="/views/menu.jsp" %>	
+</div>
+  <div class="con" >
   <h1>Listado de estudiantes</h1>
   <table>
   <thead>
@@ -49,5 +65,6 @@ th {
   
   </tbody>  
   </table>
+ </div>
 </body>
 </html>
